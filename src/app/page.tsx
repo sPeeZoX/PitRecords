@@ -32,14 +32,14 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.04)_0%,_transparent_60%)]" />
 
-        {/* Globe — right half, full height, desktop only */}
+        {/* Globe — centered upper area on mobile, right half on desktop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 0.4 }}
-          className="absolute right-0 top-0 bottom-0 w-1/2 hidden md:flex items-center justify-center z-10 pointer-events-auto"
+          className="absolute inset-x-0 top-16 flex justify-center md:inset-x-auto md:right-0 md:top-0 md:bottom-0 md:w-1/2 md:items-center z-10 pointer-events-auto"
         >
-          <GlobePulse className="w-full max-w-[580px]" />
+          <GlobePulse className="w-[270px] sm:w-[340px] md:w-full md:max-w-[580px]" />
         </motion.div>
 
         {/* Text content — bottom left */}
