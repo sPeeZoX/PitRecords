@@ -10,6 +10,7 @@ import { releases } from "@/data/releases";
 import ArtistCard from "@/components/ArtistCard";
 import ReleaseCard from "@/components/ReleaseCard";
 import SectionHeading from "@/components/SectionHeading";
+import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -26,17 +27,26 @@ export default function HomePage() {
       {/* ─── HERO ────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative h-screen flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 overflow-hidden"
+        className="relative h-screen flex items-end overflow-hidden"
       >
-        {/* Background placeholder — replace with video or image */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.04)_0%,_transparent_60%)]" />
 
+        {/* Globe — right half, full height, desktop only */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.4 }}
+          className="absolute right-0 top-0 bottom-0 w-1/2 hidden md:flex items-center justify-center z-10 pointer-events-auto"
+        >
+          <RotatingEarth width={680} height={680} className="w-full" />
+        </motion.div>
+
+        {/* Text content — bottom left */}
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative z-10 max-w-screen-xl mx-auto w-full"
+          className="relative z-20 max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 md:pb-24"
         >
-          {/* Label */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,13 +56,12 @@ export default function HomePage() {
             EST. 2024 — INDEPENDENT LABEL
           </motion.p>
 
-          {/* Main headline */}
           <div className="overflow-hidden">
             <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4rem,15vw,14rem)] font-bold leading-none tracking-tighter text-white"
+              className="text-[clamp(4rem,10vw,10rem)] font-bold leading-none tracking-tighter text-white"
             >
               PIT
             </motion.h1>
@@ -62,26 +71,25 @@ export default function HomePage() {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4rem,15vw,14rem)] font-bold leading-none tracking-tighter text-white"
+              className="text-[clamp(4rem,10vw,10rem)] font-bold leading-none tracking-tighter text-white"
             >
               RECORDS
             </motion.h1>
           </div>
 
-          {/* Subtitle + CTA row */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mt-6 md:mt-10"
+            className="flex flex-col md:flex-row items-start md:items-end gap-8 mt-6 md:mt-10 md:w-1/2"
           >
-            <p className="text-white/50 text-base md:text-lg tracking-[0.1em] max-w-md">
+            <p className="text-white/50 text-base md:text-lg tracking-[0.1em] max-w-sm">
               UNDERGROUND SOUND. NO COMPROMISE.
             </p>
 
             <Link
               href="/artists"
-              className="group flex items-center gap-3 text-xs tracking-[0.3em] text-white/60 hover:text-white transition-colors duration-300"
+              className="group flex items-center gap-3 text-xs tracking-[0.3em] text-white/60 hover:text-white transition-colors duration-300 shrink-0"
             >
               DISCOVER ARTISTS
               <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
@@ -94,7 +102,7 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-8 right-6 md:right-12 flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-6 md:left-12 flex items-center gap-3 z-30"
         >
           <motion.div
             animate={{ y: [0, 6, 0] }}
@@ -102,9 +110,7 @@ export default function HomePage() {
           >
             <ArrowDown className="w-4 h-4 text-white/30" />
           </motion.div>
-          <p className="text-white/20 text-[10px] tracking-[0.3em] [writing-mode:vertical-lr]">
-            SCROLL
-          </p>
+          <p className="text-white/20 text-[10px] tracking-[0.3em]">SCROLL</p>
         </motion.div>
       </section>
 
