@@ -37,7 +37,7 @@ export default function ArtistsPageClient() {
       {/* Artist Sections */}
       {artists.map((artist, index) => {
         const artistReleases = releases.filter(
-          (r) => r.artistSlug === artist.slug
+          (r) => r.artistSlugs.includes(artist.slug)
         );
 
         return (

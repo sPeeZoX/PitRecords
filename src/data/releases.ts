@@ -3,8 +3,7 @@ export interface Release {
   slug?: string;
   title: string;
   artist: string;
-  artistSlug: string;
-  featuredArtists?: string[];
+  artistSlugs: string[];
   type: "Album" | "EP" | "Single" | "Mixtape";
   year: number;
   cover: string;
@@ -25,7 +24,7 @@ export const releases: Release[] = [
     slug: "fovea",
     title: "FOVEA",
     artist: "TOGOMORI & MUZZZ",
-    artistSlug: "togomori",
+    artistSlugs: ["togomori", "muzzz"],
     type: "EP",
     year: 2026,
     cover: "/images/fovea-cover-1.png",
@@ -47,13 +46,13 @@ export const releases: Release[] = [
       spotify: "https://open.spotify.com/album/0cvxxxg1B4Up8KV1uRprbE?si=1B1HVuhFRLy-UvBHrg2Y8Q",
     },
     description:
-      "A seven-track collab EP between TOGOMORI and MUZZZ. FOVEA is the sharpest point — the centre of focus. Features MOVII on SYNDROME.",
+      "A seven-track joint EP by TOGOMORI and MUZZZ. FOVEA is the sharpest point — the centre of focus. Features MOVII on SYNDROME.",
   },
   {
     id: "togomori-muzzz-my-time",
     title: "MY TIME",
     artist: "TOGOMORI & MUZZZ",
-    artistSlug: "togomori",
+    artistSlugs: ["togomori", "muzzz"],
     type: "Single",
     year: 2025,
     cover: "https://i.scdn.co/image/ab67616d0000b2736e30cdbb46b443f71a896e90",
@@ -66,7 +65,7 @@ export const releases: Release[] = [
     id: "togomori-on-peut-saimer-encore",
     title: "ON PEUT S'AIMER ENCORE",
     artist: "TOGOMORI",
-    artistSlug: "togomori",
+    artistSlugs: ["togomori"],
     type: "Single",
     year: 2025,
     cover: "https://i.scdn.co/image/ab67616d0000b273936dc50fbe23a7363b0f877d",
@@ -79,7 +78,7 @@ export const releases: Release[] = [
     id: "muzzz-bounce",
     title: "BOUNCE",
     artist: "MUZZZ",
-    artistSlug: "muzzz",
+    artistSlugs: ["muzzz"],
     type: "Single",
     year: 2025,
     cover: "https://i.scdn.co/image/ab67616d0000b27373d525d6f66470ae6d5b1bf0",

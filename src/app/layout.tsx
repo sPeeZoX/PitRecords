@@ -26,16 +26,12 @@ export const metadata: Metadata = {
     "independent label",
     "experimental music",
   ],
-  icons: {
-    icon: "/logo-black.png",
-    apple: "/logo-black.png",
-  },
   openGraph: {
     title: "PIT RECORDS",
     description: "Underground sound. No compromise.",
     type: "website",
     url: "https://pitrecords.org",
-    images: [{ url: "/logo-black.png" }],
+    images: [{ url: "/favicon.png" }],
   },
   twitter: {
     card: "summary_large_image",

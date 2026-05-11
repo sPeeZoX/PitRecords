@@ -42,7 +42,7 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-6 md:px-12 relative flex items-center justify-center h-16 md:h-20">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-12 relative flex items-center justify-center h-20 md:h-24">
 
           {/* Centered logo */}
           <Link
@@ -53,9 +53,9 @@ export default function Navbar() {
             <Image
               src="/logo-white.png"
               alt="PIT RECORDS"
-              width={120}
-              height={60}
-              className="h-10 md:h-12 w-auto object-contain"
+              width={200}
+              height={100}
+              className="h-14 md:h-16 w-auto object-contain"
               priority
             />
           </Link>

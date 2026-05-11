@@ -101,11 +101,6 @@ export default function ReleaseCard({ release, index = 0 }: ReleaseCardProps) {
           </h3>
           <p className="text-white/40 text-sm tracking-[0.1em]">
             {release.artist}
-            {release.featuredArtists && release.featuredArtists.length > 0 && (
-              <span className="text-white/25">
-                {" "}× {release.featuredArtists.join(" × ")}
-              </span>
-            )}
           </p>
           <p className="text-white/20 text-xs mt-1">{release.year}</p>
         </div>

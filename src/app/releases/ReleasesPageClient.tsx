@@ -13,7 +13,7 @@ export default function ReleasesPageClient() {
 
   const filtered = releases.filter((r) => {
     if (filter === "ALL") return true;
-    return r.artist === filter;
+    return r.artistSlugs.includes(filter.toLowerCase());
   });
 
   return (
