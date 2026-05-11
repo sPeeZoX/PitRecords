@@ -10,7 +10,7 @@ import { releases } from "@/data/releases";
 import ArtistCard from "@/components/ArtistCard";
 import ReleaseCard from "@/components/ReleaseCard";
 import SectionHeading from "@/components/SectionHeading";
-import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
+import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -39,7 +39,7 @@ export default function HomePage() {
           transition={{ duration: 2, delay: 0.4 }}
           className="absolute right-0 top-0 bottom-0 w-1/2 hidden md:flex items-center justify-center z-10 pointer-events-auto"
         >
-          <RotatingEarth width={680} height={680} className="w-full" />
+          <GlobePulse className="w-full max-w-[580px]" />
         </motion.div>
 
         {/* Text content — bottom left */}
