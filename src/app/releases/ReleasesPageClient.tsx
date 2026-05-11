@@ -1,21 +1,61 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { releases } from "@/data/releases";
-import { artists } from "@/data/artists";
-import ReleaseCard from "@/components/ReleaseCard";
+import MusicPortfolio, { type PortfolioProject } from "@/components/ui/music-portfolio";
 
-type Filter = "ALL" | "TOGOMORI" | "MUZZZ";
+const projectsData: PortfolioProject[] = [
+  {
+    id: 1,
+    artist: "TOGOMORI × MUZZZ",
+    album: "FOVEA",
+    category: "EP",
+    label: "PIT RECORDS",
+    year: "2026",
+    image: "/images/fovea-cover-1.png",
+    href: "/releases/fovea",
+    external: false,
+  },
+  {
+    id: 2,
+    artist: "TOGOMORI × MUZZZ",
+    album: "MY TIME",
+    category: "SINGLE",
+    label: "PIT RECORDS",
+    year: "2025",
+    image: "https://i.scdn.co/image/ab67616d0000b2736e30cdbb46b443f71a896e90",
+    href: "https://open.spotify.com/album/0Ll9Zv0CUTf6rkYnb8GgUO",
+    external: true,
+  },
+  {
+    id: 3,
+    artist: "TOGOMORI",
+    album: "ON PEUT S'AIMER ENCORE",
+    category: "SINGLE",
+    label: "PIT RECORDS",
+    year: "2025",
+    image: "https://i.scdn.co/image/ab67616d0000b273936dc50fbe23a7363b0f877d",
+    href: "https://open.spotify.com/album/3nt9gXz80lLluCwMLgQAqL",
+    external: true,
+  },
+  {
+    id: 4,
+    artist: "MUZZZ",
+    album: "BOUNCE",
+    category: "SINGLE",
+    label: "PIT RECORDS",
+    year: "2025",
+    image: "https://i.scdn.co/image/ab67616d0000b27373d525d6f66470ae6d5b1bf0",
+    href: "https://open.spotify.com/album/3Gsq1ch715JFj72BAUi96Y",
+    external: true,
+  },
+];
+
+const config = {
+  timeZone: "Africa/Casablanca",
+  idleDelay: 4000,
+};
 
 export default function ReleasesPageClient() {
-  const [filter, setFilter] = useState<Filter>("ALL");
-
-  const filtered = releases.filter((r) => {
-    if (filter === "ALL") return true;
-    return r.artistSlugs.includes(filter.toLowerCase());
-  });
-
   return (
     <>
       {/* Page Header */}
@@ -42,136 +82,17 @@ export default function ReleasesPageClient() {
         </div>
       </section>
 
-      {/* Filter */}
-      <section className="px-6 md:px-12 mb-12 md:mb-20">
+      {/* Portfolio tracklist */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="pb-40 px-6 md:px-12"
+      >
         <div className="max-w-screen-xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex items-center gap-8 border-b border-white/10 pb-0"
-          >
-            {(["ALL", ...artists.map((a) => a.name)] as Filter[]).map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`text-xs tracking-[0.3em] pb-4 border-b-2 transition-all duration-300 ${
-                  filter === f
-                    ? "text-white border-white"
-                    : "text-white/30 border-transparent hover:text-white/60"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </motion.div>
+          <MusicPortfolio projects={projectsData} config={config} />
         </div>
-      </section>
-
-      {/* Grid */}
-      <section className="pb-24 md:pb-40 px-6 md:px-12">
-        <div className="max-w-screen-xl mx-auto">
-          <motion.div
-            layout
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10"
-          >
-            {filtered.map((release, i) => (
-              <ReleaseCard key={release.id} release={release} index={i} />
-            ))}
-          </motion.div>
-
-          {filtered.length === 0 && (
-            <div className="text-center py-24">
-              <p className="text-white/20 text-sm tracking-[0.3em]">
-                NO RELEASES FOUND
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Full release detail — expanded view per release */}
-      <section className="py-24 md:py-40 px-6 md:px-12 border-t border-white/5">
-        <div className="max-w-screen-xl mx-auto">
-          <p className="text-white/20 text-xs tracking-[0.4em] mb-16">
-            RELEASE DETAILS
-          </p>
-          <div className="space-y-16">
-            {releases.map((release, i) => (
-              <motion.div
-                key={release.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16 py-12 border-t border-white/5 first:border-t-0"
-              >
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                    {release.title}
-                  </h3>
-                  <p className="text-white/40 text-sm tracking-[0.15em] mb-1">
-                    {release.artist}
-                  </p>
-                  <p className="text-white/20 text-xs tracking-[0.1em]">
-                    {release.type} · {release.year}
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-white/50 leading-relaxed mb-6">
-                    {release.description}
-                  </p>
-
-                  {release.tracks && (
-                    <div className="mb-6">
-                      <p className="text-white/20 text-xs tracking-[0.3em] mb-4">
-                        TRACKLIST
-                      </p>
-                      <ol className="space-y-2">
-                        {release.tracks.map((track, ti) => (
-                          <li
-                            key={track}
-                            className="text-sm text-white/40 flex items-center gap-4"
-                          >
-                            <span className="text-white/20 text-xs w-4">
-                              {String(ti + 1).padStart(2, "0")}
-                            </span>
-                            {track}
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-6">
-                    {release.streamingLinks.spotify && (
-                      <a
-                        href={release.streamingLinks.spotify}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs tracking-[0.2em] text-white/30 hover:text-white transition-colors duration-300 border border-white/10 px-4 py-2 hover:border-white/40"
-                      >
-                        SPOTIFY
-                      </a>
-                    )}
-                    {release.streamingLinks.soundcloud && (
-                      <a
-                        href={release.streamingLinks.soundcloud}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs tracking-[0.2em] text-white/30 hover:text-white transition-colors duration-300 border border-white/10 px-4 py-2 hover:border-white/40"
-                      >
-                        SOUNDCLOUD
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </motion.section>
     </>
   );
 }

@@ -48,6 +48,194 @@ body {
   color: #000000;
 }
 
+/* ── Music Portfolio ──────────────────────────── */
+.mp-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mp-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: min(40vw, 480px);
+  height: min(40vw, 480px);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mp-head {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1.5fr 60px;
+  padding: 0 0 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.mp-head-cell {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: var(--font-geist-mono), monospace;
+  text-transform: uppercase;
+}
+
+.mp-head-cell.category,
+.mp-head-cell.label {
+  display: none;
+}
+
+.mp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.mp-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 60px;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  align-items: center;
+  transition: border-color 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.mp-row:hover,
+.mp-row.active {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.mp-cell {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-geist-mono), monospace;
+  transition: color 0.3s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
+}
+
+.mp-cell.artist {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+}
+
+.mp-cell.album {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.mp-cell.category,
+.mp-cell.label {
+  display: none;
+}
+
+.mp-cell.year {
+  color: rgba(255, 255, 255, 0.2);
+  text-align: right;
+  padding-right: 0;
+  font-size: 0.65rem;
+}
+
+.mp-row.active .mp-cell {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.mp-row.active .mp-cell.artist {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mp-row.active .mp-cell.album {
+  color: #ffffff;
+}
+
+.mp-row.active .mp-cell.year {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Desktop: show all columns */
+@media (min-width: 768px) {
+  .mp-head {
+    grid-template-columns: 2fr 2fr 1fr 1.5fr 60px;
+  }
+  .mp-head-cell.category,
+  .mp-head-cell.label {
+    display: block;
+  }
+  .mp-row {
+    grid-template-columns: 2fr 2fr 1fr 1.5fr 60px;
+  }
+  .mp-cell.category,
+  .mp-cell.label {
+    display: block;
+  }
+}
+
+/* Corner elements */
+.mp-corners {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.mp-corner {
+  position: absolute;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.mp-corner a {
+  color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  pointer-events: auto;
+  transition: color 0.2s;
+}
+
+.mp-corner a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mp-corner.top-left  { top: 7rem;  left: 1.5rem; }
+.mp-corner.top-right { top: 7rem;  right: 1.5rem; text-align: right; }
+.mp-corner.bottom-left  { bottom: 1.5rem; left: 1.5rem; }
+.mp-corner.bottom-right { bottom: 1.5rem; right: 1.5rem; }
+
+.mp-corner-sq {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.mp-blink {
+  animation: blink 1s step-end infinite;
+}
+
 /* Utility classes */
 @layer utilities {
   .text-balance {
