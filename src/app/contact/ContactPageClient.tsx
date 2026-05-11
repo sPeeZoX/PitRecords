@@ -14,9 +14,8 @@ const contactInfo = [
   {
     icon: Instagram,
     label: "INSTAGRAM",
-    // Replace with actual Instagram handle/URL
-    value: "@pitrecords",
-    href: "https://instagram.com",
+    value: "@thepit_off",
+    href: "https://instagram.com/thepit_off",
   },
 ];
 

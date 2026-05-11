@@ -67,15 +67,14 @@ export default function Footer() {
                 <Mail className="w-4 h-4" />
                 contact@pitrecords.org
               </a>
-              {/* Replace href with actual PIT RECORDS Instagram URL */}
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/thepit_off"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-white transition-colors duration-300"
               >
                 <Instagram className="w-4 h-4" />
-                @pitrecords
+                @thepit_off
               </a>
             </div>
           </div>

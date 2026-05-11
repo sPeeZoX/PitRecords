@@ -37,6 +37,7 @@ export const artists: Artist[] = [
     genre: "Noise / Experimental Hip-Hop",
     image: "https://i.scdn.co/image/ab6761610000e5eb93d7705c0e1d4820ec657b24",
     socials: {
+      instagram: "https://instagram.com/iamuzzz",
       spotify: "https://open.spotify.com/artist/5NaP1z6e7iZ6BYIiKKVMRW",
     },
   },
