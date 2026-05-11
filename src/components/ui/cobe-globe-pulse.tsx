@@ -20,6 +20,7 @@ const defaultMarkers: PulseMarker[] = [
   { id: "pulse-2", location: [33.99, -6.85],  delay: 0.5 },   // Rabat, Morocco
   { id: "pulse-3", location: [48.85,  2.35],  delay: 1 },     // Paris, France
   { id: "pulse-4", location: [51.21,  3.22],  delay: 1.5 },   // Bruges, Belgium
+  { id: "pulse-5", location: [26.55,  31.69], delay: 2 },     // Sohag, Egypt
 ]
 
 export function GlobePulse({

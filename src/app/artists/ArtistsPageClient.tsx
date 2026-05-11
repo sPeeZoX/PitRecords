@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Instagram, ExternalLink } from "lucide-react";
 import { artists } from "@/data/artists";
 import { releases } from "@/data/releases";
+import { AnimatedBlobImage } from "@/components/ui/frame";
 
 export default function ArtistsPageClient() {
   return (
@@ -58,16 +59,11 @@ export default function ArtistsPageClient() {
                   transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                   className={index % 2 === 1 ? "md:order-2" : ""}
                 >
-                  <div className="aspect-[3/4] bg-white/5 relative overflow-hidden">
-                    <Image
-                      src={artist.image}
-                      alt={artist.name}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
+                  <AnimatedBlobImage
+                    src={artist.image}
+                    alt={artist.name}
+                    className="max-w-sm mx-auto"
+                  />
                 </motion.div>
 
                 {/* Info */}

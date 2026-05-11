@@ -48,10 +48,32 @@ const projectsData: PortfolioProject[] = [
     href: "https://open.spotify.com/album/3Gsq1ch715JFj72BAUi96Y",
     external: true,
   },
+  {
+    id: 5,
+    artist: "MOVII ft. TOGOMORI",
+    album: "SHE",
+    category: "FEATURE",
+    label: "/",
+    year: "2026",
+    image: "https://i.scdn.co/image/ab67616d0000b273572b1967627dac34c7f8bc45",
+    href: "https://open.spotify.com/track/2sdpvDhsOUwLiIS7T5sj6i",
+    external: true,
+  },
+  {
+    id: 6,
+    artist: "MOVII ft. MUZZZ",
+    album: "VOCALIST",
+    category: "FEATURE",
+    label: "/",
+    year: "2026",
+    image: "https://i.scdn.co/image/ab67616d0000b273572b1967627dac34c7f8bc45",
+    href: "https://open.spotify.com/track/71ldOsZJTD6SPDuoYOYVDa",
+    external: true,
+  },
 ];
 
 const config = {
-  timeZone: "Africa/Casablanca",
+  timeZone: "Europe/Brussels",
   idleDelay: 4000,
 };
 

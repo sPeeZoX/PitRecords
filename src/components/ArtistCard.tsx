@@ -34,11 +34,7 @@ export default function ArtistCard({ artist, index = 0 }: ArtistCardProps) {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-          {/* Hover overlay */}
           <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          {/* Arrow */}
           <div className="absolute top-4 right-4 w-10 h-10 border border-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
             <ArrowUpRight className="w-4 h-4 text-white" />
           </div>

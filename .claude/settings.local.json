@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:open.spotify.com)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process *)",
+      "PowerShell(npm show *)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\speez\\\\Desktop\\\\PITRECORDS\" | Where-Object { !$_.PSIsContainer } | Select-Object FullName)",
+      "PowerShell(Copy-Item *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(dir C:\\\\Users\\\\speez\\\\Desktop\\\\PITRECORDS\\\\PitRecords\\\\pictures *)"
+    ]
+  }
+}

@@ -87,4 +87,30 @@ export const releases: Release[] = [
     },
     description: "A MUZZZ single.",
   },
+  {
+    id: "movii-she-togomori",
+    title: "SHE",
+    artist: "MOVII ft. TOGOMORI",
+    artistSlugs: ["togomori"],
+    type: "Single",
+    year: 2026,
+    cover: "https://i.scdn.co/image/ab67616d0000b273572b1967627dac34c7f8bc45",
+    streamingLinks: {
+      spotify: "https://open.spotify.com/track/2sdpvDhsOUwLiIS7T5sj6i",
+    },
+    description: "TOGOMORI featured on MOVII's ONYX album.",
+  },
+  {
+    id: "movii-vocalist-muzzz",
+    title: "VOCALIST",
+    artist: "MOVII ft. MUZZZ",
+    artistSlugs: ["muzzz"],
+    type: "Single",
+    year: 2026,
+    cover: "https://i.scdn.co/image/ab67616d0000b273572b1967627dac34c7f8bc45",
+    streamingLinks: {
+      spotify: "https://open.spotify.com/track/71ldOsZJTD6SPDuoYOYVDa",
+    },
+    description: "MUZZZ featured on MOVII's ONYX album.",
+  },
 ];
