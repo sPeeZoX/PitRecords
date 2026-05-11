@@ -45,7 +45,7 @@ export default function HomePage() {
         {/* Text content — bottom left */}
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative z-20 max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 md:pb-24"
+          className="relative z-20 max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 md:pb-24 pointer-events-none"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function HomePage() {
 
             <Link
               href="/artists"
-              className="group flex items-center gap-3 text-xs tracking-[0.3em] text-white/60 hover:text-white transition-colors duration-300 shrink-0"
+              className="group flex items-center gap-3 text-xs tracking-[0.3em] text-white/60 hover:text-white transition-colors duration-300 shrink-0 pointer-events-auto"
             >
               DISCOVER ARTISTS
               <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
