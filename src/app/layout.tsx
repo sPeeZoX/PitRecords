@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Underground sound. No compromise.",
     type: "website",
     url: "https://pitrecords.org",
-    images: [{ url: "/favicon.png" }],
+    images: [{ url: "/logo-white.png" }],
   },
   twitter: {
     card: "summary_large_image",
