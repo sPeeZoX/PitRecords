@@ -25,13 +25,13 @@ const covers = [
 ];
 
 const tracks = [
-  { number: "01", title: "NOT ONE STEP BACK", features: ["MUZZZ"] },
-  { number: "02", title: "MY TIME", features: ["MUZZZ"] },
-  { number: "03", title: "SYNDROME", features: ["MUZZZ", "MOVII"] },
-  { number: "04", title: "FOVEA INTERLUDE", features: ["MUZZZ"] },
-  { number: "05", title: "MI AMORE", features: ["MUZZZ"] },
-  { number: "06", title: "SPZ", features: ["MUZZZ"] },
-  { number: "07", title: "HOMMAGE", features: ["MUZZZ"] },
+  { number: "01", title: "NOT ONE STEP BACK", artists: ["TOGOMORI", "MUZZZ"] },
+  { number: "02", title: "MY TIME", artists: ["TOGOMORI", "MUZZZ"] },
+  { number: "03", title: "SYNDROME", artists: ["TOGOMORI", "MUZZZ", "MOVII"] },
+  { number: "04", title: "FOVEA INTERLUDE", artists: ["TOGOMORI", "MUZZZ"] },
+  { number: "05", title: "MI AMORE", artists: ["TOGOMORI", "MUZZZ"] },
+  { number: "06", title: "SPZ", artists: ["TOGOMORI", "MUZZZ"] },
+  { number: "07", title: "HOMMAGE", artists: ["TOGOMORI", "MUZZZ"] },
 ];
 
 export default function FoveaPageClient() {
@@ -264,25 +264,18 @@ export default function FoveaPageClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center justify-between py-5 border-b border-white/5 group hover:border-white/10 transition-colors duration-300"
+                className="flex items-start gap-6 md:gap-10 py-5 border-b border-white/5 group hover:border-white/10 transition-colors duration-300"
               >
-                <div className="flex items-center gap-6 md:gap-10">
-                  <span className="text-white/20 text-sm w-8 shrink-0 font-mono">
-                    {track.number}
-                  </span>
-                  <span className="text-base md:text-lg font-medium tracking-wide group-hover:text-white/70 transition-colors duration-300">
+                <span className="text-white/20 text-sm w-8 shrink-0 font-mono pt-0.5">
+                  {track.number}
+                </span>
+                <div className="flex flex-col gap-1">
+                  <span className="text-base md:text-lg font-medium tracking-wide group-hover:text-white/80 transition-colors duration-300">
                     {track.title}
                   </span>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  {track.features.map((feat) => (
-                    <span
-                      key={feat}
-                      className="text-[10px] tracking-[0.2em] text-white/25 border border-white/10 px-2 py-1"
-                    >
-                      {feat}
-                    </span>
-                  ))}
+                  <span className="text-white/30 text-xs tracking-[0.2em]">
+                    {track.artists.join(" · ")}
+                  </span>
                 </div>
               </motion.div>
             ))}
