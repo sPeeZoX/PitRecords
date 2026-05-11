@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { artists } from "@/data/artists";
 import { releases } from "@/data/releases";
-import ArtistCard from "@/components/ArtistCard";
+import TeamMemberCard from "@/components/ui/team-member-card";
 import ReleaseCard from "@/components/ReleaseCard";
 import SectionHeading from "@/components/SectionHeading";
 import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
+import { SpecialText } from "@/components/ui/special-text";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -61,9 +61,11 @@ export default function HomePage() {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4rem,10vw,10rem)] font-bold leading-none tracking-tighter text-white"
+              className="text-[clamp(4rem,10vw,10rem)] leading-none tracking-tighter text-white"
             >
-              PIT
+              <SpecialText delay={0.2} speed={22} className="text-[clamp(4rem,10vw,10rem)] font-bold tracking-tighter">
+                PIT
+              </SpecialText>
             </motion.h1>
           </div>
           <div className="overflow-hidden">
@@ -71,9 +73,11 @@ export default function HomePage() {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4rem,10vw,10rem)] font-bold leading-none tracking-tighter text-white"
+              className="text-[clamp(4rem,10vw,10rem)] leading-none tracking-tighter text-white"
             >
-              RECORDS
+              <SpecialText delay={0.35} speed={22} className="text-[clamp(4rem,10vw,10rem)] font-bold tracking-tighter">
+                RECORDS
+              </SpecialText>
             </motion.h1>
           </div>
 
@@ -118,11 +122,22 @@ export default function HomePage() {
       <section className="py-24 md:py-40 px-6 md:px-12">
         <div className="max-w-screen-xl mx-auto">
           <SectionHeading label="Our Roster" title="THE ARTISTS" />
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-4xl">
-            {artists.map((artist, i) => (
-              <ArtistCard key={artist.id} artist={artist} index={i} />
-            ))}
-          </div>
+          <TeamMemberCard
+            position="left"
+            jobPosition="EXPERIMENTAL / DARK ELECTRONIC"
+            firstName="TOGOMORI"
+            imageUrl="/images/togomori.png"
+            description="Sonic architect pushing the limits of experimental sound design and underground electronic music. Raw, deliberate, and uncompromising."
+            href="/artists#togomori"
+          />
+          <TeamMemberCard
+            position="right"
+            jobPosition="NOISE / EXPERIMENTAL HIP-HOP"
+            firstName="MUZZZ"
+            imageUrl="https://i.scdn.co/image/ab6761610000e5eb93d7705c0e1d4820ec657b24"
+            description="Operates at the intersection of noise, hip-hop, and avant-garde production. Every track feels like a transmission from another dimension."
+            href="/artists#muzzz"
+          />
         </div>
       </section>
 
