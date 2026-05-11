@@ -193,12 +193,12 @@ export default function MusicPortfolio({ projects, config = {} }: MusicPortfolio
     const bg = backgroundRef.current
     if (bg && img) {
       bg.style.transition = "none"
-      bg.style.transform = "translate(-50%, -50%) scale(1.15)"
+      bg.style.transform = "scale(1.06)"
       bg.style.backgroundImage = `url(${img})`
-      bg.style.opacity = "1"
+      bg.style.opacity = "0.18"
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        bg.style.transition = "opacity 0.5s ease, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)"
-        bg.style.transform = "translate(-50%, -50%) scale(1)"
+        bg.style.transition = "opacity 0.6s ease, transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)"
+        bg.style.transform = "scale(1)"
       }))
     }
   }, [activeIndex, stopIdleAnim, stopIdleTimer])
