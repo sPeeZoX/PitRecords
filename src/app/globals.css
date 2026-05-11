@@ -5,6 +5,9 @@
 :root {
   --foreground: #ffffff;
   --background: #000000;
+  --primary: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --muted-foreground: rgba(255, 255, 255, 0.4);
 }
 
 * {

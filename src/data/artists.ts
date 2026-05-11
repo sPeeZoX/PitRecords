@@ -22,7 +22,7 @@ export const artists: Artist[] = [
     tagline: "Born rebel.",
     bio: "TOGOMORI is a sonic architect pushing the limits of experimental sound design and underground electronic music. Drawing from industrial textures, dark ambient landscapes, and fractured rhythms, TOGOMORI crafts immersive worlds that defy genre classification. Each release is a statement — raw, deliberate, and uncompromising.",
     genre: "Experimental / Dark Electronic",
-    image: "https://i.scdn.co/image/ab6761610000f178822204ef7d9da84f7bd9556a",
+    image: "/images/togomori.png",
     socials: {
       instagram: "https://instagram.com/togomoriiii8",
       spotify: "https://open.spotify.com/artist/6yalalhic157WrYz30jzAS?si=6FcSodIOR4uciW4eHCETJQ",

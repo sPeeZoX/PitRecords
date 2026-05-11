@@ -13,6 +13,11 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       colors: {
+        foreground: "var(--foreground)",
+        background: "var(--background)",
+        primary: "var(--primary)",
+        border: "var(--border)",
+        "muted-foreground": "var(--muted-foreground)",
         pit: {
           black: "#000000",
           white: "#FFFFFF",

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram, ExternalLink, Music } from "lucide-react";
+import { Instagram, ExternalLink } from "lucide-react";
 import { artists } from "@/data/artists";
 import { releases } from "@/data/releases";
 
@@ -108,8 +108,14 @@ export default function ArtistsPageClient() {
                             className="flex items-center justify-between py-3 border-b border-white/5 group"
                           >
                             <div className="flex items-center gap-4">
-                              <div className="w-8 h-8 bg-white/5 flex items-center justify-center">
-                                <Music className="w-3 h-3 text-white/30" />
+                              <div className="w-10 h-10 bg-white/5 relative overflow-hidden shrink-0">
+                                <Image
+                                  src={release.cover}
+                                  alt={release.title}
+                                  fill
+                                  className="object-cover"
+                                  sizes="40px"
+                                />
                               </div>
                               <div>
                                 <p className="text-sm font-medium tracking-wide">

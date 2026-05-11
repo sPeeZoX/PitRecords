@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 interface MobileMenuProps {
   links: { href: string; label: string }[];
@@ -42,12 +43,11 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
       >
         {links.map((link) => (
           <motion.li key={link.href} variants={itemVariants}>
-            <Link
-              href={link.href}
-              onClick={onClose}
-              className="block text-5xl md:text-7xl font-bold tracking-tighter text-white/70 hover:text-white transition-colors duration-200 leading-tight"
-            >
-              {link.label}
+            <Link href={link.href} onClick={onClose} className="block">
+              <TextScramble
+                text={link.label}
+                className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight opacity-70 hover:opacity-100 transition-opacity duration-200"
+              />
             </Link>
           </motion.li>
         ))}
