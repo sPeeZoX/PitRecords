@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,11 +15,20 @@ interface ReleaseCardProps {
 export default function ReleaseCard({ release, index = 0 }: ReleaseCardProps) {
   const covers = release.covers ?? [release.cover];
   const [coverIndex, setCoverIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const cycleCover = (e: React.MouseEvent) => {
+  const startCycling = () => {
     if (covers.length <= 1) return;
-    e.preventDefault();
-    setCoverIndex((prev) => (prev + 1) % covers.length);
+    intervalRef.current = setInterval(() => {
+      setCoverIndex((prev) => (prev + 1) % covers.length);
+    }, 600);
+  };
+
+  const stopCycling = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
   };
 
   const CardWrapper = release.slug
@@ -40,8 +49,8 @@ export default function ReleaseCard({ release, index = 0 }: ReleaseCardProps) {
         {/* Cover art */}
         <div
           className="relative aspect-square bg-white/5 overflow-hidden mb-4 cursor-pointer"
-          onClick={covers.length > 1 ? cycleCover : undefined}
-          title={covers.length > 1 ? "Click to cycle covers" : undefined}
+          onMouseEnter={startCycling}
+          onMouseLeave={stopCycling}
         >
           <Image
             src={covers[coverIndex]}
@@ -53,7 +62,7 @@ export default function ReleaseCard({ release, index = 0 }: ReleaseCardProps) {
 
           {/* Cover dots for multi-cover releases */}
           {covers.length > 1 && (
-            <div className="absolute top-3 right-3 flex gap-1 z-10">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
               {covers.map((_, i) => (
                 <span
                   key={i}
