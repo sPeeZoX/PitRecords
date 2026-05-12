@@ -224,7 +224,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="aspect-square bg-white/[0.03] border border-white/5 flex items-center justify-center p-12"
+              className="hidden md:flex aspect-square bg-white/[0.03] border border-white/5 items-center justify-center p-12"
             >
               <Image
                 src="/logo-white.png"
