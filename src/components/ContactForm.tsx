@@ -4,23 +4,29 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
-    // Replace with your preferred form service (Formspree, Resend, etc.)
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const payload = {
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      message: data.get("message") as string,
+    };
+
     try {
-      // Example: Formspree endpoint — replace YOUR_FORM_ID
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
@@ -65,15 +71,6 @@ export default function ContactForm() {
             className={inputClass}
           />
         </div>
-      </div>
-
-      <div>
-        <input
-          type="text"
-          name="subject"
-          placeholder="SUBJECT"
-          className={inputClass}
-        />
       </div>
 
       <div>
