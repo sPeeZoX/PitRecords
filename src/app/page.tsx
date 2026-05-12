@@ -12,6 +12,46 @@ import SectionHeading from "@/components/SectionHeading";
 import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 import { SpecialText } from "@/components/ui/special-text";
 
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+
+function MarqueeScramble({ text, className }: { text: string; className?: string }) {
+  const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const scrambleChar = (index: number) => {
+    const el = charRefs.current[index];
+    if (!el) return;
+    const original = text[index];
+    let frame = 0;
+    const timer = setInterval(() => {
+      frame++;
+      if (frame >= 8) {
+        clearInterval(timer);
+        el.textContent = original;
+      } else {
+        el.textContent = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      }
+    }, 40);
+  };
+
+  return (
+    <span className={className}>
+      {text.split("").map((char, i) =>
+        char === " " || char === "·" ? (
+          <span key={i}>{char}</span>
+        ) : (
+          <span
+            key={i}
+            ref={el => { charRefs.current[i] = el; }}
+            onMouseEnter={() => scrambleChar(i)}
+          >
+            {char}
+          </span>
+        )
+      )}
+    </span>
+  );
+}
+
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -142,19 +182,18 @@ export default function HomePage() {
       </section>
 
       {/* ─── MARQUEE DIVIDER ─────────────────────────────────────── */}
-      <div className="py-8 border-y border-white/5 overflow-hidden">
+      <div className="py-8 border-y border-white/10 overflow-hidden">
         <motion.div
           animate={{ x: [0, -1000] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="flex gap-16 whitespace-nowrap"
         >
           {[...Array(6)].map((_, i) => (
-            <span
+            <MarqueeScramble
               key={i}
-              className="text-white/5 text-5xl md:text-7xl font-bold tracking-tighter shrink-0"
-            >
-              PIT RECORDS · TOGOMORI · MUZZZ ·&nbsp;
-            </span>
+              text="WHAT COMES AFTER · FOVEA HAS BEEN OPENED · SHOCK HAS BEEN FELT ·  "
+              className="text-white text-5xl md:text-7xl font-bold tracking-tighter shrink-0 cursor-default select-none"
+            />
           ))}
         </motion.div>
       </div>
