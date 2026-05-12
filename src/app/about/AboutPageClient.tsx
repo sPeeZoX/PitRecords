@@ -69,7 +69,7 @@ export default function AboutPageClient() {
             className="max-w-3xl"
           >
             <p className="text-2xl md:text-3xl lg:text-4xl leading-snug text-white/80 font-light tracking-tight">
-              PIT RECORDS is an independent label focused on boundary-pushing
+              PIT RECORDS is an independent collective focused on boundary-pushing
               music, visual storytelling, and underground culture.
             </p>
           </motion.div>

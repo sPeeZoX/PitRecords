@@ -229,7 +229,7 @@ export default function MusicPortfolio({ projects, config = {} }: MusicPortfolio
         <span className="mp-head-cell">ARTIST</span>
         <span className="mp-head-cell">RELEASE</span>
         <span className="mp-head-cell category">TYPE</span>
-        <span className="mp-head-cell label">LABEL</span>
+        <span className="mp-head-cell label">COLLECTIVE</span>
         <span className="mp-head-cell year">YEAR</span>
       </div>
 

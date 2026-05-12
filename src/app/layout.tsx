@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     template: "%s | PIT RECORDS",
   },
   description:
-    "Independent music label featuring TOGOMORI and MUZZZ. Underground sound. No compromise.",
+    "Independent music collective featuring TOGOMORI and MUZZZ. Underground sound. No compromise.",
   keywords: [
     "PIT RECORDS",
     "TOGOMORI",
     "MUZZZ",
     "underground music",
-    "independent label",
+    "independent collective",
     "experimental music",
   ],
   openGraph: {

@@ -35,7 +35,7 @@ export default function Footer() {
             <p className="mt-5 text-white/30 text-xs leading-relaxed max-w-xs">
               Underground sound. No compromise.
               <br />
-              Independent music label.
+              Independent music collective.
             </p>
           </div>
 
