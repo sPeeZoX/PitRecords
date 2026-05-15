@@ -20,6 +20,18 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    id: "muzzz-aftershock",
+    slug: "AFTERSHOCK",
+    title: "AFTERSHOCK",
+    artist: "MUZZZ",
+    artistSlugs: ["muzzz"],
+    type: "EP",
+    year: 2026,
+    cover: "/images/aftershock-cover.png",
+    streamingLinks: {},
+    description: "The debut solo EP by MUZZZ. Dropping midnight 16.05.2026 on PIT RECORDS.",
+  },
+  {
     id: "togomori-fovea",
     slug: "fovea",
     title: "FOVEA",
