@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,9 +8,29 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const TARGET = new Date("2026-05-16T00:00:00").getTime();
+
+function getTimeLeft() {
+  const diff = Math.max(0, TARGET - Date.now());
+  return {
+    hours: Math.floor(diff / 3600000),
+    minutes: Math.floor((diff % 3600000) / 60000),
+    seconds: Math.floor((diff % 60000) / 1000),
+    done: diff === 0,
+  };
+}
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
 export default function AftershockPageClient() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const [time, setTime] = useState(getTimeLeft());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,10 +87,10 @@ export default function AftershockPageClient() {
             <span className="text-white/10 text-xs">·</span>
             <span className="text-white/30 text-xs tracking-[0.4em]">EP · 2026</span>
             <span className="text-white/10 text-xs">·</span>
-            <span className="text-white/30 text-xs tracking-[0.4em]">DROPPING 16.05.2026</span>
+            <span className="text-white/30 text-xs tracking-[0.4em]">MUZZZ</span>
           </motion.div>
 
-          <div className="overflow-hidden mb-4">
+          <div className="overflow-hidden mb-6">
             <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -81,14 +101,43 @@ export default function AftershockPageClient() {
             </motion.h1>
           </div>
 
-          <motion.p
+          {/* Countdown */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white/50 text-base md:text-xl tracking-wide font-medium"
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            MUZZZ
-          </motion.p>
+            {time.done ? (
+              <p className="text-white/60 text-sm tracking-[0.4em]">OUT NOW</p>
+            ) : (
+              <div>
+                <p className="text-white/30 text-[10px] tracking-[0.4em] mb-3">DROPPING IN</p>
+                <div className="flex items-start gap-2 md:gap-4">
+                  {[
+                    { value: time.hours, label: "HRS" },
+                    { value: time.minutes, label: "MIN" },
+                    { value: time.seconds, label: "SEC" },
+                  ].map(({ value, label }, i) => (
+                    <div key={label} className="flex items-start">
+                      {i > 0 && (
+                        <span className="text-white/20 text-3xl md:text-5xl font-bold leading-none mx-1 md:mx-2 mt-1">
+                          :
+                        </span>
+                      )}
+                      <div className="flex flex-col items-center">
+                        <span className="text-4xl md:text-7xl font-bold tabular-nums tracking-tighter leading-none">
+                          {pad(value)}
+                        </span>
+                        <span className="text-white/25 text-[9px] tracking-[0.3em] mt-1.5">
+                          {label}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
         </div>
       </section>
 
@@ -146,7 +195,7 @@ export default function AftershockPageClient() {
         </div>
       </section>
 
-      {/* ── GET NOTIFIED ─────────────────────────────────────── */}
+      {/* ── EXCLUSIVE INFO ──────────────────────────────────── */}
       <section className="py-24 md:py-40 px-6 md:px-12 border-t border-white/5">
         <div className="max-w-screen-xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
@@ -156,13 +205,12 @@ export default function AftershockPageClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="text-white/20 text-xs tracking-[0.4em] mb-6">GET NOTIFIED</p>
+              <p className="text-white/20 text-xs tracking-[0.4em] mb-6">EXCLUSIVE INFO</p>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-                BE FIRST<br />WHEN IT DROPS.
+                FIRST IN.<br />FIRST HEAR.
               </h2>
               <p className="text-white/40 text-sm leading-relaxed">
-                Midnight 16.05.2026. Drop your email and we&apos;ll
-                hit you the second AFTERSHOCK is live.
+                Sign up and get exclusive content, early access, and updates straight from PIT RECORDS — before anyone else.
               </p>
             </motion.div>
 
@@ -184,7 +232,7 @@ export default function AftershockPageClient() {
                       YOU&apos;RE ON THE LIST
                     </p>
                     <p className="text-2xl md:text-3xl font-medium text-white/80">
-                      We&apos;ll see you at midnight.
+                      Exclusive info incoming.
                     </p>
                   </motion.div>
                 ) : (
@@ -222,7 +270,7 @@ export default function AftershockPageClient() {
                       disabled={status === "sending"}
                       className="group flex items-center gap-3 text-xs tracking-[0.3em] bg-white text-black px-8 py-4 hover:bg-white/80 transition-all duration-300 font-medium disabled:opacity-50"
                     >
-                      {status === "sending" ? "SENDING..." : "NOTIFY ME"}
+                      {status === "sending" ? "SENDING..." : "SIGN UP FOR EXCLUSIVE INFO"}
                       {status === "idle" && (
                         <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
                       )}
